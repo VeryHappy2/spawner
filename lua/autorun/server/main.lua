@@ -6,17 +6,9 @@ util.AddNetworkString("RequestSpawnNPC")
 
 net.Receive("RequestSpawnNPC", function(len, ply)
     local npcType = net.ReadString()
+    local spawned = SpawnNPC(npcType)
 
-    local validNPCs = {
-        "npc_combine_s",
-        "npc_metropolice",
-        "npc_zombie",
-        "npc_antlion",
-    }
-
-    if not table.HasValue(validNPCs, npcType) then
-        ply:PrintMessage(HUD_PRINTTALK, "Невірний тип NPC!")
-        return
+    if not spawned then
+        ply:PrintMessage(HUD_PRINTTALK, "That's not right npc!")
     end
-    SpawnNPC(npcType)
 end)
