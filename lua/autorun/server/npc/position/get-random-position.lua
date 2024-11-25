@@ -15,7 +15,7 @@ function GetSafeSpawnPosition()
 
         if trace.Hit then
             local safePos = trace.HitPos + Vector(0, 0, 10)
-            
+
             local checkTrace = util.TraceHull({
                 start = safePos,
                 endpos = safePos + Vector(0, 0, 10),
@@ -44,6 +44,6 @@ function GetRandomSpawnPosition()
     local x = math.Rand(minBound.x, maxBound.x)
     local y = math.Rand(minBound.y, maxBound.y)
     local z = math.Rand(FindMinZPosition(), FindTheHighestPosition())
-    
+
     return Vector(x, y, z)
 end
